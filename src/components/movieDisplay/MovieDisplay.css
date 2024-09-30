@@ -1,0 +1,19 @@
+.displayMovie-container {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+
+  .displayMovie-container-movies {
+    display: flex;
+    flex-direction: row;
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+  
+    article {
+      margin: 1rem;
+    }
+  }
+}
