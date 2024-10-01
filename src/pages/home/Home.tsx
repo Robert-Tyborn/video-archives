@@ -60,10 +60,10 @@ export const Home = () => {
   return (
     <main>
       <section>
-        <MovieDisplay movies={trending} title="Trending" />
+        <MovieDisplay movies={trending} title="Trending" thumbnail="" />
       </section>
       <section>
-        <MovieDisplay movies={recommended} title="Recommended" />
+        <MovieDisplay movies={recommended} title="Recommended" thumbnail="" />
       </section>
     </main>
   );
