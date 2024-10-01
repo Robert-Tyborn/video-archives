@@ -1,5 +1,5 @@
 import { act, render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { Home } from './Home';
 import { fetchMovieData } from '../../utilities/fetch';
 import mockMovies from '../../../public/data/movies.json';
@@ -9,9 +9,8 @@ vi.mock('../../utilities/fetch', () => ({
 }));
 
 describe('Home Component', () => {
-
   it('renders the Home component and displays movie lists', async () => {
-    (fetchMovieData as vi.mock).mockResolvedValue(mockMovies);
+    (fetchMovieData as jest.Mock).mockResolvedValue(mockMovies);
     await act(async () => {
       render(<Home />);
     });
@@ -19,6 +18,6 @@ describe('Home Component', () => {
     expect(await screen.findByText(/Recommended/i)).toBeInTheDocument();
     const movieCards = screen.getAllByTestId('movieCard');
     expect(movieCards).toHaveLength(16);
-    screen.debug()
+    screen.debug();
   });
 });
