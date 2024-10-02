@@ -12,14 +12,14 @@ const Search = () => {
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
-      const movies = await fetchMovieData(); 
+      const movies = await fetchMovieData();
 
       // Fuse.js configuration and search
       const fuse = new Fuse(movies, { keys: ['title'], threshold: 0.3 });
       const searchResults = fuse.search(query);
       console.log(searchResults.map(result => result.item));
     } else {
-      console.log('Please enter a movie name.'); 
+      console.log('Please enter a movie name.');
     }
   };
 

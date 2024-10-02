@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { Home } from '../pages/home/Home';
-import { Categories } from '../pages/category/Categories';
+import { Categories } from '../pages/categories/Categories';
 
 const router = createBrowserRouter([
   {
