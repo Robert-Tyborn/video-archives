@@ -2,7 +2,7 @@ import './navbar.css';
 import { NavLink } from 'react-router-dom';
 import Search from '../search/Search';
 
-export default function () {
+export default function Navbar() {
   return (
     <nav>
       <ul>
@@ -10,7 +10,7 @@ export default function () {
         <NavLink to="/">
           <li>Home</li>
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="/categories">
           <li>Categories</li>
         </NavLink>
         <NavLink to="/">
