@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
+import Fuse from 'fuse.js';
+import { fetchMovieData } from '../../utilities/fetch';
 
-interface SearchProps {
-  onSearch: (query: string) => void;
-}
-
-const Search: React.FC<SearchProps> = ({ onSearch }) => {
+const Search = () => {
   const [query, setQuery] = useState('');
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
   };
 
-  const handleSearch = (event: React.FormEvent) => {
-    event.preventDefault();
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault();
     if (query.trim()) {
-      onSearch(query.trim());
+      const movies = await fetchMovieData(); 
+
+      // Fuse.js configuration and search
+      const fuse = new Fuse(movies, { keys: ['title'], threshold: 0.3 });
+      const searchResults = fuse.search(query);
+      console.log(searchResults.map(result => result.item));
+    } else {
+      console.log('Please enter a movie name.'); 
     }
   };
 
@@ -22,9 +27,9 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
     <form onSubmit={handleSearch}>
       <input
         type="text"
-        placeholder="Search for a movie..."
         value={query}
         onChange={handleInputChange}
+        placeholder="Search for a movie..."
       />
       <button type="submit">Search</button>
     </form>
