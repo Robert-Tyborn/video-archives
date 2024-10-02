@@ -1,5 +1,6 @@
 import './navbar.css';
 import { NavLink } from 'react-router-dom';
+import Search from '../search/Search';
 
 export default function () {
   return (
@@ -16,6 +17,7 @@ export default function () {
           <li>Bookmarks</li>
         </NavLink>
       </ul>
+      <Search />
     </nav>
   );
 }
