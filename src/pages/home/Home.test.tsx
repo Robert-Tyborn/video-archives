@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { Home } from './Home';
@@ -10,7 +11,7 @@ vi.mock('../../utilities/fetch', () => ({
 
 describe('Home Component', () => {
   it('renders the Home component and displays movie lists', async () => {
-    (fetchMovieData as vi.mock).mockResolvedValue(mockMovies);
+    (fetchMovieData as any).mockResolvedValue(mockMovies);
     await act(async () => {
       render(<Home />);
     });
