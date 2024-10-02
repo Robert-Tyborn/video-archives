@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './Home.css';
 import { MovieDisplay } from '../../components/movieDisplay/MovieDisplay';
 import { fetchMovieData } from '../../utilities/fetch';
+import Navbar from '../../components/navbar/Navbar';
 
 export const Home = () => {
   const [recommended, setRecommended] = useState<Movie[]>([]);
@@ -58,13 +59,16 @@ export const Home = () => {
   }
 
   return (
-    <main>
-      <section>
-        <MovieDisplay movies={trending} title="Trending" />
-      </section>
-      <section>
-        <MovieDisplay movies={recommended} title="Recommended" />
-      </section>
-    </main>
+    <>
+      <Navbar />
+      <main>
+        <section>
+          <MovieDisplay movies={trending} title="Trending" />
+        </section>
+        <section>
+          <MovieDisplay movies={recommended} title="Recommended" />
+        </section>
+      </main>
+    </>
   );
 };
