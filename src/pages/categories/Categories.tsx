@@ -9,6 +9,10 @@ export const Categories = () => {
   const [genres, setGenres] = useState<string[]>([]);
 
   useEffect(() => {
+    console.log(activeFilter);
+  }, [activeFilter]);
+
+  useEffect(() => {
     async function fetchData() {
       try {
         const data: Movie[] = await fetchMovieData();
