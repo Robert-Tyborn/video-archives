@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/video-achives/',
+  base: '/video-archives/',
   plugins: [react()],
   test: {
     globals: true,
