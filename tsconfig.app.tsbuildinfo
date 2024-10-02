@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/moviedisplay/moviedisplay.tsx","./src/pages/home/home.test.tsx","./src/pages/home/home.tsx","./src/router/router.tsx","./src/test/setup.ts","./src/utilities/fetch.ts","./src/utilities/interfaces.d.ts"],"version":"5.6.2"}
