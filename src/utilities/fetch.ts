@@ -1,4 +1,4 @@
-export async function fetchMovieData(){
+export async function fetchMovieData() {
   try {
     const response = await fetch('/data/movies.json');
     if (!response.ok) {

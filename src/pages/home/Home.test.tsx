@@ -9,7 +9,6 @@ vi.mock('../../utilities/fetch', () => ({
 }));
 
 describe('Home Component', () => {
-
   it('renders the Home component and displays movie lists', async () => {
     (fetchMovieData as vi.mock).mockResolvedValue(mockMovies);
     await act(async () => {
@@ -19,6 +18,6 @@ describe('Home Component', () => {
     expect(await screen.findByText(/Recommended/i)).toBeInTheDocument();
     const movieCards = screen.getAllByTestId('movieCard');
     expect(movieCards).toHaveLength(16);
-    screen.debug()
+    screen.debug();
   });
 });
