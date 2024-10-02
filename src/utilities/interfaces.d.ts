@@ -1,9 +1,23 @@
-interface Movie {
+// interface Movie {
+//     title: string;
+//     year: number,
+//     rating: string;
+//     actors: string;[],
+//     genre: string;
+//     synopsis: string;
+//     thumbnail: string;
+//     bookmarked?: boolean;
+// }
+
+
+export interface Movie {
     title: string;
-    year: number,
+    year: number;
     rating: string;
-    actors: string;[],
+    actors: string[];
     genre: string;
     synopsis: string;
     thumbnail: string;
-}
+    bookmarked?: boolean;
+  }
+  
