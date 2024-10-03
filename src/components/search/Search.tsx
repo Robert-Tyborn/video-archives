@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import Fuse from 'fuse.js';
 import { fetchMovieData } from '../../utilities/fetch';
+import { useNavigate } from 'react-router-dom';
 
 const Search = () => {
   const [query, setQuery] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -12,14 +15,22 @@ const Search = () => {
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
-      const movies = await fetchMovieData();
+      sessionStorage.removeItem('searchedMovie'); // Clear sessionStorage
+      setLoading(true); // Start loading state
 
-      // Fuse.js configuration and search
-      const fuse = new Fuse(movies, { keys: ['title'], threshold: 0.3 });
-      const searchResults = fuse.search(query);
-      console.log(searchResults.map(result => result.item));
+      try {
+        const movies = await fetchMovieData(); // Fetch movies
+        const fuse = new Fuse(movies, { keys: ['title'], threshold: 0.3 });
+        const searchResults = fuse.search(query).map(result => result.item);
+        sessionStorage.setItem('searchedMovie', JSON.stringify(searchResults));
+        navigate('/video-archives/search-results');
+      } catch (error) {
+        console.error('Error fetching movie data:', error);
+      } finally {
+        setLoading(false); // End loading state
+      }
     } else {
-      console.log('Please enter a movie name.');
+      alert('Please enter a movie name.'); // User feedback for empty input
     }
   };
 
@@ -30,8 +41,11 @@ const Search = () => {
         value={query}
         onChange={handleInputChange}
         placeholder="Search for a movie..."
+        aria-label="Search for a movie" // Accessibility improvement
       />
-      <button type="submit">Search</button>
+      <button type="submit" disabled={loading}>
+        {loading ? 'Searching...' : 'Search'}
+      </button>
     </form>
   );
 };
