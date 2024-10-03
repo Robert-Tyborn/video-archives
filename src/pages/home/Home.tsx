@@ -63,10 +63,10 @@ export const Home = () => {
       <Navbar />
       <main>
         <section>
-          <MovieDisplay movies={trending} title="Trending" />
+          <MovieDisplay movies={trending} title="Trending" size="large" />
         </section>
         <section>
-          <MovieDisplay movies={recommended} title="Recommended" />
+          <MovieDisplay movies={recommended} title="Recommended" size="small" />
         </section>
       </main>
     </>
