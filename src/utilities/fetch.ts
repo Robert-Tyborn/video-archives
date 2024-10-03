@@ -1,6 +1,8 @@
 export async function fetchMovieData() {
   try {
-    const response = await fetch('/data/movies.json');
+    const response = await fetch(`/video-archives/data/movies.json`);
+    console.log(response);
+
     if (!response.ok) {
       throw new Error('Response was not ok');
     }

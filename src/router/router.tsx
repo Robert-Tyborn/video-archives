@@ -4,11 +4,11 @@ import { Categories } from '../pages/categories/Categories';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/video-archives/',
     element: <Home />,
   },
   {
-    path: '/categories',
+    path: '/video-archives/categories',
     element: <Categories />,
   },
 ]);

@@ -4,3 +4,4 @@ package-lock.json
 *.config.ts
 *.config.js
 *.json
+*.d.ts
