@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { fetchMovieData } from '../../utilities/fetch';
 import './Categories.css';
 import Navbar from '../../components/navbar/Navbar';
+import { MovieDisplay } from '../../components/movieDisplay/MovieDisplay';
 
 export const Categories = () => {
   const [movieData, setMovieData] = useState<Movie[] | null>(null);
-  const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const [activeFilter, setActiveFilter] = useState<string | ''>('');
   const [genres, setGenres] = useState<string[]>([]);
+  const [moviesByGenre, setMoviesByGenre] = useState<Movie[] | null>(null);
 
   useEffect(() => {
     console.log(activeFilter);
@@ -28,11 +30,7 @@ export const Categories = () => {
     const findGenres = () => {
       if (movieData) {
         const uniqueGenres = Array.from(
-          new Set(
-            movieData.flatMap(movie =>
-              movie.genre.split(',').map(genre => genre.trim())
-            )
-          )
+          new Set(movieData.flatMap(movie => movie.genre.split(', ')))
         );
         setGenres(uniqueGenres);
       }
@@ -40,13 +38,38 @@ export const Categories = () => {
     findGenres();
   }, [movieData]);
 
+  useEffect(() => {
+    function findMoviesGenre() {
+      if (movieData && movieData.length > 0) {
+        const activeGenres = activeFilter.split(', ');
+
+        const filteredByGenre = movieData.filter(movie => {
+          const movieGenres = movie.genre.split(', ');
+          return activeGenres.every(genre => movieGenres.includes(genre));
+        });
+
+        console.log(filteredByGenre);
+        setMoviesByGenre(filteredByGenre);
+      }
+    }
+    findMoviesGenre();
+  }, [activeFilter, movieData]);
+
   const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
-    console.log(e.target);
     const { name, checked } = e.target as HTMLInputElement;
 
-    if (checked) {
-      setActiveFilter(name);
-    }
+    setActiveFilter(prevValue => {
+      if (checked) {
+        return prevValue ? `${prevValue}, ${name}` : name;
+      } else {
+        const updatedFilter = prevValue
+          .split(', ')
+          .filter(filter => filter !== name)
+          .join(', ');
+
+        return updatedFilter;
+      }
+    });
   };
 
   return (
@@ -71,6 +94,15 @@ export const Categories = () => {
             );
           })}
         </fieldset>
+        {moviesByGenre && (
+          <section>
+            <MovieDisplay
+              movies={moviesByGenre}
+              title={activeFilter}
+              size={'small'}
+            />
+          </section>
+        )}
       </main>
     </>
   );
