@@ -1,12 +1,15 @@
-import { useEffect, useState } from 'react';
 import './Home.css';
+import { useEffect, useState } from 'react';
 import { MovieDisplay } from '../../components/movieDisplay/MovieDisplay';
 import { fetchMovieData } from '../../utilities/fetch';
 import Navbar from '../../components/navbar/Navbar';
+import TrendingCarousel from '../../components/trendingCarousel/TrendingCarousel';
+import MovieCarousel from '../../components/movieCarousel/MovieCarousel';
 
 export const Home = () => {
   const [recommended, setRecommended] = useState<Movie[]>([]);
   const [trending, setTrending] = useState<Movie[]>([]);
+  const [remaining, setRemaining] = useState<Movie[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -16,15 +19,18 @@ export const Home = () => {
 
         if (data.length > 0) {
           const trendingMovies = randomSelectionMovies(data, 8);
-          console.log(trendingMovies);
-
           setTrending(trendingMovies);
 
           const filteredMovies = remainingMovies(trendingMovies, data);
-          const recommendedMovies = randomSelectionMovies(filteredMovies, 8);
-          console.log(recommendedMovies);
 
+          const recommendedMovies = randomSelectionMovies(filteredMovies, 8);
           setRecommended(recommendedMovies);
+
+          const remaining = remainingMovies(
+            [...trendingMovies, ...recommendedMovies],
+            data
+          );
+          setRemaining(remaining);
         } else {
           setError('Failed to fetch movies.');
         }
@@ -35,9 +41,9 @@ export const Home = () => {
     fetchData();
   }, []);
 
-  const remainingMovies = (trendingMovies: Movie[], allMovies: Movie[]) => {
+  const remainingMovies = (selectedMovies: Movie[], allMovies: Movie[]) => {
     return allMovies.filter(movieData => {
-      return !trendingMovies.some(movie => movie.title === movieData.title);
+      return !selectedMovies.some(movie => movie.title === movieData.title);
     });
   };
 
@@ -62,12 +68,9 @@ export const Home = () => {
     <>
       <Navbar />
       <main>
-        <section>
-          <MovieDisplay movies={trending} title="Trending" thumbnail="" />
-        </section>
-        <section>
-          <MovieDisplay movies={recommended} title="Recommended" thumbnail="" />
-        </section>
+        <TrendingCarousel movies={trending} />
+        <MovieCarousel movies={recommended} title="Recommended" />
+        <MovieCarousel movies={remaining} title="Movies" />
       </main>
     </>
   );

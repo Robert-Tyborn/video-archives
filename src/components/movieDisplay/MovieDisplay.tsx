@@ -1,4 +1,3 @@
-import { Carousel } from '../carousel/Carousel';
 import './MovieDisplay.css';
 
 type Movie = {
@@ -16,19 +15,17 @@ export const MovieDisplay = ({ movies, title }: MovieDisplayProps) => {
   return (
     <section className="displayMovie-container">
       <h3>{title}</h3>
-      <Carousel>
-        <section className="displayMovie-container-movies">
-          {movies.map(movie => (
-            <article
-              key={movie.title}
-              className="movieCard"
-              data-testid="movieCard"
-            >
-              <img src={movie.thumbnail} alt="" />
-            </article>
-          ))}
-        </section>
-      </Carousel>
+      <section className="displayMovie-container-movies">
+        {movies.map(movie => (
+          <article
+            key={movie.title}
+            className="movieCard"
+            data-testid="movieCard"
+          >
+            <img src={movie.thumbnail} alt="" />
+          </article>
+        ))}
+      </section>
     </section>
   );
 };
