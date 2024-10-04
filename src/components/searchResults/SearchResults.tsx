@@ -1,24 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { MovieDisplay } from '../movieDisplay/MovieDisplay';
 import Navbar from '../navbar/Navbar';
 
 const SearchResults = () => {
-  const searchedMovie =
-    JSON.parse(sessionStorage.getItem('searchedMovie')) || [];
-
-  console.log('Searched Movie:', searchedMovie);
+  const [searchResults, setSearchResults] = useState<Movie[]>([]);
+  const location = useLocation();
 
   useEffect(() => {
-    return () => {
-      sessionStorage.removeItem('searchResults'); // Clear sessionStorage when leaving component
-    };
-  }, []);
+    const storedResults = sessionStorage.getItem('searchedMovie');
+    if (storedResults) {
+      setSearchResults(JSON.parse(storedResults));
+    }
+  }, [location.search]);
 
   return (
     <div>
       <Navbar />
-      {searchedMovie.length > 0 ? (
-        <MovieDisplay movies={searchedMovie} title="Search Results" />
+      {searchResults.length > 0 ? (
+        <MovieDisplay
+          movies={searchResults}
+          title="Search Results"
+          size="large"
+        />
       ) : (
         <p>No results found</p>
       )}

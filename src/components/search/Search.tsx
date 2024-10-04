@@ -15,22 +15,27 @@ const Search = () => {
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
-      sessionStorage.removeItem('searchedMovie'); // Clear sessionStorage
-      setLoading(true); // Start loading state
+      setLoading(true);
 
       try {
-        const movies = await fetchMovieData(); // Fetch movies
+        const movies = await fetchMovieData();
         const fuse = new Fuse(movies, { keys: ['title'], threshold: 0.3 });
         const searchResults = fuse.search(query).map(result => result.item);
+
         sessionStorage.setItem('searchedMovie', JSON.stringify(searchResults));
-        navigate('/video-archives/search-results');
+
+        // Navigate to the search results page with query parameter to force update
+        navigate(
+          `/video-archives/search-results?query=${encodeURIComponent(query)}`
+        );
+        setQuery('');
       } catch (error) {
         console.error('Error fetching movie data:', error);
       } finally {
-        setLoading(false); // End loading state
+        setLoading(false);
       }
     } else {
-      alert('Please enter a movie name.'); // User feedback for empty input
+      alert('Please enter a movie name.');
     }
   };
 
@@ -41,7 +46,7 @@ const Search = () => {
         value={query}
         onChange={handleInputChange}
         placeholder="Search for a movie..."
-        aria-label="Search for a movie" // Accessibility improvement
+        aria-label="Search for a movie"
       />
       <button type="submit" disabled={loading}>
         {loading ? 'Searching...' : 'Search'}
