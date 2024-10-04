@@ -37,13 +37,4 @@ describe('Search component tests', () => {
     await userEvent.click(button);
     expect(window.alert).toHaveBeenCalledWith('Please enter a movie name.');
   });
-
-  it('shows the loading screen with correct text only', () => {
-    render(
-      <MemoryRouter>
-        
-      </MemoryRouter>
-    );
-    expect
-  });
 });
