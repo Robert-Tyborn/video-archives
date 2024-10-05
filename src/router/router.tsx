@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     element: <SearchResults />,
   },
   {
-    path: '/video-archives/filmview',
+    path: '/video-archives/filmview/:id',
     element: <FilmView />
   }
 ]);

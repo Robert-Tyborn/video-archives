@@ -6,8 +6,9 @@ export async function fetchMovieData() {
       throw new Error('Response was not ok');
     }
     const data = await response.json();
-    return data;
+    return data as Movie[];
   } catch (error) {
     console.error(error);
+    return [] as Movie[];
   }
 }
