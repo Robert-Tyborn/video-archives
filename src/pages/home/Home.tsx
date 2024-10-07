@@ -9,7 +9,6 @@ export const Home = () => {
   const [trending, setTrending] = useState<Movie[]>([]);
   const [error, setError] = useState<string | null>(null);
 
-
   useEffect(() => {
     async function fetchData() {
       try {
@@ -59,7 +58,6 @@ export const Home = () => {
     return <div>Error: {error}</div>;
   }
 
-
   return (
     <>
       <header>
@@ -67,10 +65,10 @@ export const Home = () => {
       </header>
       <main>
         <section>
-          <MovieDisplay movies={trending} title="Trending" size="large"/>
+          <MovieDisplay movies={trending} title="Trending" size="large" />
         </section>
         <section>
-          <MovieDisplay movies={recommended} title="Recommended" size="small"/>
+          <MovieDisplay movies={recommended} title="Recommended" size="small" />
         </section>
       </main>
     </>

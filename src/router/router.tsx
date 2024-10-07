@@ -19,8 +19,8 @@ const router = createBrowserRouter([
   },
   {
     path: '/video-archives/filmview/:id',
-    element: <FilmView />
-  }
+    element: <FilmView />,
+  },
 ]);
 
 export default router;

@@ -13,7 +13,6 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
     navigate(`/video-archives/filmview/${movie.title}`, { state: movie });
   };
 
-  
   return (
     <article
       key={movie.title}
