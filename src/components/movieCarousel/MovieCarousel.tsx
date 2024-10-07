@@ -1,5 +1,6 @@
 import Slider from 'react-slick';
 import './moviecarousel.css';
+import { MovieDisplay } from '../movieDisplay/MovieDisplay';
 
 const NextArrow = (props: any) => {
   const { className, onClick } = props;

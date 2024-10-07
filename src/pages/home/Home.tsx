@@ -1,6 +1,5 @@
 import './Home.css';
 import { useEffect, useState } from 'react';
-import { MovieDisplay } from '../../components/movieDisplay/MovieDisplay';
 import { fetchMovieData } from '../../utilities/fetch';
 import Navbar from '../../components/navbar/Navbar';
 import TrendingCarousel from '../../components/trendingCarousel/TrendingCarousel';
@@ -66,19 +65,11 @@ export const Home = () => {
 
   return (
     <>
-      <header>
-        <Navbar />
-      </header>
+      <Navbar />
       <main>
         <TrendingCarousel movies={trending} />
         <MovieCarousel movies={recommended} title="Recommended" />
         <MovieCarousel movies={remaining} title="Movies" />
-        <section>
-          <MovieDisplay movies={trending} title="Trending" size="large" />
-        </section>
-        <section>
-          <MovieDisplay movies={recommended} title="Recommended" size="small" />
-        </section>
       </main>
     </>
   );

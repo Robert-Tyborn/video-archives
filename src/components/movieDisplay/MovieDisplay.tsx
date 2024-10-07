@@ -4,12 +4,16 @@ import './MovieDisplay.css';
 type Movie = {
   title: string;
   thumbnail: string;
+  year: number;
+  rating: string;
+  actors: string[];
+  genre: string;
+  synopsis: string;
 };
 
 type MovieDisplayProps = {
   movies: Movie[];
   title: string;
-  thumbnail: string;
   size: 'small' | 'large';
 };
 
