@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import Fuse from 'fuse.js';
 import { fetchMovieData } from '../../utilities/fetch';
 import { useNavigate } from 'react-router-dom';
+import './Search.css';
+import searchGlass from '../../assets/search-glass-white.svg';
+
 
 const Search = () => {
   const [query, setQuery] = useState('');
@@ -39,17 +42,19 @@ const Search = () => {
     }
   };
 
+  
   return (
-    <form onSubmit={handleSearch}>
+    <form onSubmit={handleSearch} className="search-container">
       <input
+        className="search-input"
         type="text"
         value={query}
         onChange={handleInputChange}
         placeholder="Search for a movie..."
         aria-label="Search for a movie"
       />
-      <button type="submit" disabled={loading}>
-        {loading ? 'Searching...' : 'Search'}
+      <button className="search-button" type="submit" disabled={loading}>
+        <img src={searchGlass} alt="Search" className="search-icon" />
       </button>
     </form>
   );
