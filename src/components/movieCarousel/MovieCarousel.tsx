@@ -15,10 +15,10 @@ const NextArrow = (props: any) => {
       >
         <path
           d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001  
-              c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394
-              c-5.857,5.858-5.857,15.355,0.001,21.213C82.322,328.536,86.161,330,90,330
-              s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606
-              C255,161.018,253.42,157.202,250.606,154.389z"
+                c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394
+                c-5.857,5.858-5.857,15.355,0.001,21.213C82.322,328.536,86.161,330,90,330
+                s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606
+                C255,161.018,253.42,157.202,250.606,154.389z"
         />
       </svg>
     </div>
@@ -39,10 +39,10 @@ const PrevArrow = (props: any) => {
       >
         <path
           d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001  
-              c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394
-              c-5.857,5.858-5.857,15.355,0.001,21.213C82.322,328.536,86.161,330,90,330
-              s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606
-              C255,161.018,253.42,157.202,250.606,154.389z"
+                c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394
+                c-5.857,5.858-5.857,15.355,0.001,21.213C82.322,328.536,86.161,330,90,330
+                s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606
+                C255,161.018,253.42,157.202,250.606,154.389z"
         />
       </svg>
     </div>
@@ -52,14 +52,24 @@ const PrevArrow = (props: any) => {
 interface Movie {
   title: string;
   thumbnail: string;
+  year: number;
+  rating: string;
+  actors: string[];
+  genre: string;
+  synopsis: string;
 }
 
 interface MovieCarouselProps {
   movies: Movie[];
   title: string;
+  size: 'small' | 'large';
 }
 
-export default function MovieCarousel({ movies, title }: MovieCarouselProps) {
+export default function MovieCarousel({
+  movies,
+  title,
+  size,
+}: MovieCarouselProps) {
   const settings = {
     dots: false,
     infinite: true,
@@ -77,17 +87,9 @@ export default function MovieCarousel({ movies, title }: MovieCarouselProps) {
       <div className="sliderWrapper">
         <h1>{title}</h1>
         <Slider {...settings}>
-          {movies.map(movie => (
-            <div
-              key={movie.title}
-              className="movieCard"
-              data-testid="movieCard"
-            >
-              <img
-                src={movie.thumbnail}
-                alt={movie.title}
-                className="movieThumbnail"
-              />
+          {movies.map((movie, index) => (
+            <div key={index}>
+              <MovieDisplay movies={[movie]} title="" size={size} />
             </div>
           ))}
         </Slider>

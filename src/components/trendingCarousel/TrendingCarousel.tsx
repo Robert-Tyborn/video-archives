@@ -1,7 +1,7 @@
 import Slider from 'react-slick';
 import './TrendingCarousel.css';
+import { MovieDisplay } from '../movieDisplay/MovieDisplay';
 
-// Custom Next Arrow Button
 const NextArrow = (props: any) => {
   const { className, onClick } = props;
   return (
@@ -52,13 +52,23 @@ const PrevArrow = (props: any) => {
 interface Movie {
   title: string;
   thumbnail: string;
+  year: number;
+  rating: string;
+  actors: string[];
+  genre: string;
+  synopsis: string;
 }
 
 interface TrendingCarouselProps {
   movies: Movie[];
+  title: string;
+  size: 'small' | 'large';
 }
 
-export default function TrendingCarousel({ movies }: TrendingCarouselProps) {
+export default function TrendingCarousel({
+  movies,
+  size,
+}: TrendingCarouselProps) {
   const settings = {
     dots: false,
     infinite: true,
@@ -74,20 +84,11 @@ export default function TrendingCarousel({ movies }: TrendingCarouselProps) {
 
   return (
     <div className="trendingContainer">
-      <h1>Trending</h1>
       <div className="sliderWrapper">
         <Slider {...settings}>
-          {movies.map(movie => (
-            <div
-              key={movie.title}
-              className="movieCard"
-              data-testid="movieCard"
-            >
-              <img
-                src={movie.thumbnail}
-                alt={movie.title}
-                className="trendingThumbnail"
-              />
+          {movies.map((movie, index) => (
+            <div key={index}>
+              <MovieDisplay movies={[movie]} title="" size={size} />
             </div>
           ))}
         </Slider>

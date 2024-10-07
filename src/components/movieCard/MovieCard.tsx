@@ -20,7 +20,7 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
       data-testid="movieCard"
       onClick={handleCardClick}
     >
-      <img src={movie.thumbnail} alt={movie.title} />
+      <img src={movie.thumbnail} alt={movie.title} className="movieThumbnail" />
       <div className="movieCard-hoverContent">
         <div className="hoverContent-bookmark">Star</div>
         <p className="hoverContent-year">{`Released: ${movie.year}`}</p>
