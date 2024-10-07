@@ -25,7 +25,7 @@ const Bookmark: React.FC<BookmarkProps> = ({ movie }) => {
     }
 
     setIsBookmarked(!isBookmarked);
-  };
+  };    
 
   return (
     <button onClick={handleToggleBookmark}>

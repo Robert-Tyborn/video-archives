@@ -1,4 +1,4 @@
-/* import { MovieCard } from '../movieCard/MovieCard';
+import { MovieCard } from '../movieCard/MovieCard';
 import './MovieDisplay.css';
 
 type MovieDisplayProps = {
@@ -19,10 +19,14 @@ export const MovieDisplay = ({ movies, title, size }: MovieDisplayProps) => {
     </section>
   );
 };
-*/ 
 
-import React from 'react';
+export default MovieDisplay;
+
+
+ /* import React from 'react';
 import Bookmark from '../bookMark/BookMark';
+import { MovieCard } from '../movieCard/MovieCard';
+import './MovieDisplay.css';
 
 type MovieDisplayProps = {
   movies: Movie[];
@@ -38,7 +42,7 @@ export const MovieDisplay: React.FC<MovieDisplayProps> = ({ movies, title }) => 
           <article key={movie.title} data-testid="movieCard">
             <h4>{movie.title}</h4>
             <img src={movie.thumbnail} alt={movie.title} />
-            <Bookmark movie={movie} /> {/* Bookmark functionality */}
+            <Bookmark movie={movie} /> 
           </article>
         ))}
       </section>
@@ -46,4 +50,4 @@ export const MovieDisplay: React.FC<MovieDisplayProps> = ({ movies, title }) => 
   );
 };
 
-export default MovieDisplay;
+export default MovieDisplay; */
