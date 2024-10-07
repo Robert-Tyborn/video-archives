@@ -13,7 +13,7 @@ export const MovieDisplay = ({ movies, title, size }: MovieDisplayProps) => {
       <h3>{title}</h3>
       <section className="displayMovie-container-movies">
         {movies.map(movie => (
-          <MovieCard movie={movie} size={size} />
+          <MovieCard key={movie.title} movie={movie} size={size}/>
         ))}
       </section>
     </section>
