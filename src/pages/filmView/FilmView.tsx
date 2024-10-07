@@ -3,6 +3,9 @@ import './FilmView.css'
 import { useLocation } from 'react-router-dom'
 import { fetchMovieData } from '../../utilities/fetch';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const navigate = useNavigate()
 
 function FilmView() {
     const location = useLocation();
@@ -21,9 +24,13 @@ function FilmView() {
                 const foundMovie = movies.find(d => d.title === title);
                 if (foundMovie) {
                     setMovie(foundMovie); // Sätt filmdata i state
-                } 
+                } else {
+                    // Navigera tillbaka om ingen film hittas
+                    navigate('/video-archives/');
+                }
                 
             } catch (error) {
+                console.error('Error fetching movie data:', error);
             }
         };
 
@@ -31,7 +38,7 @@ function FilmView() {
     }, [title, movie]);
     
     if (!movie) {
-        return <p>Couldn't find movie</p>
+        return <p>Loading movie data...</p>;
     }
 
     return (
