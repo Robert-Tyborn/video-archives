@@ -62,7 +62,9 @@ export const Home = () => {
 
   return (
     <>
-      <Navbar />
+      <header>
+        <Navbar />
+      </header>
       <main>
         <section>
           <MovieDisplay movies={trending} title="Trending" size="large"/>
