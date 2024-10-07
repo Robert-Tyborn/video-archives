@@ -5,14 +5,16 @@ import Navbar from '../../components/navbar/Navbar';
 import { MovieDisplay } from '../../components/movieDisplay/MovieDisplay';
 
 export const Categories = () => {
-  const [movieData, setMovieData] = useState<Movie[] | null>(null);
+  const [movieData, setMovieData] = useState<Movie[]>([]);
   const [activeFilter, setActiveFilter] = useState<string | ''>('');
   const [genres, setGenres] = useState<string[]>([]);
-  const [moviesByGenre, setMoviesByGenre] = useState<Movie[] | null>(null);
+  const [moviesByGenre, setMoviesByGenre] = useState<Movie[]>([]);
 
   useEffect(() => {
+    console.log(movieData);
     console.log(activeFilter);
-  }, [activeFilter]);
+    console.log(moviesByGenre);
+  }, [activeFilter, movieData, moviesByGenre]);
 
   useEffect(() => {
     async function fetchData() {
@@ -77,31 +79,35 @@ export const Categories = () => {
       <header>
         <Navbar />
       </header>
-      <main>
-        <fieldset className="seach-by-category">
-          <legend>Categories</legend>
+      <main className="main_seach-by-genre">
+        <section className="seach-by-genre_optionContainer">
           {genres.map(genre => {
             return (
-              <div>
-                <label htmlFor={genre}>{genre}</label>
-                <input
-                  type="checkbox"
-                  name={genre}
-                  id={genre}
-                  onClick={handleClick}
-                />
+              <div className="seach-by-genre_options">
+                <label>
+                  <input
+                    type="checkbox"
+                    name={genre}
+                    id={genre}
+                    onClick={handleClick}
+                    checked={activeFilter.includes(genre)}
+                  />
+                  <span
+                    className={`options_genre ${activeFilter.includes(genre) ? 'activeGenre' : ''}`}
+                  >
+                    {genre}
+                  </span>
+                </label>
               </div>
             );
           })}
-        </fieldset>
-        {moviesByGenre && (
-          <section>
-            <MovieDisplay
-              movies={moviesByGenre}
-              title={activeFilter}
-              size={'small'}
-            />
-          </section>
+        </section>
+        {movieData && (
+          <MovieDisplay
+            movies={activeFilter ? moviesByGenre : movieData}
+            title={activeFilter}
+            size={'small'}
+          />
         )}
       </main>
     </>
