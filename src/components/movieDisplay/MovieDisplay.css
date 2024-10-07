@@ -1,11 +1,13 @@
 .displayMovie-container {
   display: flex;
   flex-direction: column;
+
   text-align: start;
 
   .displayMovie-container-movies {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 
     h3 {
       font-size: 2rem;

@@ -1,0 +1,8 @@
+.seach-by-category {
+  display: flex;
+  flex-wrap: wrap;
+
+  div {
+    margin: 6px;
+  }
+}

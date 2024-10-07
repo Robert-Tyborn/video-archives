@@ -71,6 +71,12 @@ export const Home = () => {
         <TrendingCarousel movies={trending} />
         <MovieCarousel movies={recommended} title="Recommended" />
         <MovieCarousel movies={remaining} title="Movies" />
+        <section>
+          <MovieDisplay movies={trending} title="Trending" size="large" />
+        </section>
+        <section>
+          <MovieDisplay movies={recommended} title="Recommended" size="small" />
+        </section>
       </main>
     </>
   );

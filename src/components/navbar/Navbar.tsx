@@ -1,21 +1,23 @@
 import './navbar.css';
 import { NavLink } from 'react-router-dom';
+import Search from '../search/Search';
 
-export default function () {
+export default function Navbar() {
   return (
     <nav>
       <ul>
         <li className="logo">Video Archives</li>
-        <NavLink to="/">
+        <NavLink to="/video-archives/">
           <li>Home</li>
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="/video-archives/categories">
           <li>Categories</li>
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="/video-archives/">
           <li>Bookmarks</li>
         </NavLink>
       </ul>
+      <Search />
     </nav>
   );
 }
