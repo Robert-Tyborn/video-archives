@@ -1,4 +1,5 @@
 import './MovieCard.css';
+import { useNavigate } from 'react-router-dom';
 
 type MovieCardProps = {
   movie: Movie;
@@ -6,11 +7,18 @@ type MovieCardProps = {
 };
 
 export const MovieCard = ({ movie, size }: MovieCardProps) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/video-archives/filmview/${movie.title}`, { state: movie });
+  };
+
   return (
     <article
       key={movie.title}
       className={`movieCard ${size}`}
       data-testid="movieCard"
+      onClick={handleCardClick}
     >
       <img src={movie.thumbnail} alt={movie.title} />
       <div className="movieCard-hoverContent">

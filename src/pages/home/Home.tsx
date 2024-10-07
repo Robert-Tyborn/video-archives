@@ -66,7 +66,9 @@ export const Home = () => {
 
   return (
     <>
-      <Navbar />
+      <header>
+        <Navbar />
+      </header>
       <main>
         <TrendingCarousel movies={trending} />
         <MovieCarousel movies={recommended} title="Recommended" />
