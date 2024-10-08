@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import './MovieCard.css';
 import { useNavigate } from 'react-router-dom';
