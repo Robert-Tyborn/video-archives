@@ -20,7 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/video-archives/bookmarks',
-    element:  <Bookmarks />,
+    element: <Bookmarks />,
   },
   {
     path: '/video-archives/filmview/:id',

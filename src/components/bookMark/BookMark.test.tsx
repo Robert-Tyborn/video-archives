@@ -39,14 +39,14 @@ describe('Bookmark Component', () => {
 
   it('should render the correct button text based on bookmark status', () => {
     render(<Bookmark movie={mockMovie} />);
-    
+
     const button = screen.getByRole('button');
     expect(button.textContent).toBe('Add Bookmark');
   });
 
   it('should add a movie to bookmarks and update button text when clicked', () => {
     render(<Bookmark movie={mockMovie} />);
-    
+
     const button = screen.getByRole('button');
     fireEvent.click(button);
 
@@ -56,9 +56,9 @@ describe('Bookmark Component', () => {
 
   it('should remove a movie from bookmarks and update button text when clicked', () => {
     localStorage.setItem('bookmarks', JSON.stringify([mockMovie]));
-    
+
     render(<Bookmark movie={mockMovie} />);
-    
+
     const button = screen.getByRole('button');
     expect(button.textContent).toBe('Remove Bookmark');
 

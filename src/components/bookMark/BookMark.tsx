@@ -8,16 +8,24 @@ const Bookmark: React.FC<BookmarkProps> = ({ movie }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
-    const storedBookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-    const isBookmarked = storedBookmarks.some((bookmark: Movie) => bookmark.title === movie.title);
+    const storedBookmarks = JSON.parse(
+      localStorage.getItem('bookmarks') || '[]'
+    );
+    const isBookmarked = storedBookmarks.some(
+      (bookmark: Movie) => bookmark.title === movie.title
+    );
     setIsBookmarked(isBookmarked);
   }, [movie]);
 
   const handleToggleBookmark = () => {
-    const storedBookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+    const storedBookmarks = JSON.parse(
+      localStorage.getItem('bookmarks') || '[]'
+    );
 
     if (isBookmarked) {
-      const updatedBookmarks = storedBookmarks.filter((bookmark: Movie) => bookmark.title !== movie.title);
+      const updatedBookmarks = storedBookmarks.filter(
+        (bookmark: Movie) => bookmark.title !== movie.title
+      );
       localStorage.setItem('bookmarks', JSON.stringify(updatedBookmarks));
     } else {
       storedBookmarks.push(movie);
@@ -25,7 +33,7 @@ const Bookmark: React.FC<BookmarkProps> = ({ movie }) => {
     }
 
     setIsBookmarked(!isBookmarked);
-  };    
+  };
 
   return (
     <button onClick={handleToggleBookmark}>
@@ -35,4 +43,3 @@ const Bookmark: React.FC<BookmarkProps> = ({ movie }) => {
 };
 
 export default Bookmark;
-
