@@ -13,7 +13,7 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
 
   useEffect(() => {
     const storedBookmarks = JSON.parse(
-      localStorage.getItem('bookmarks') || '[]' 
+      localStorage.getItem('bookmarks') || '[]'
     );
     const isMovieBookmarked = storedBookmarks.some(
       (bookmark: Movie) => bookmark.title === movie.title
@@ -23,7 +23,7 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
 
   const toggleBookmark = () => {
     const storedBookmarks = JSON.parse(
-      localStorage.getItem('bookmarks') || '[]' 
+      localStorage.getItem('bookmarks') || '[]'
     );
     if (isBookmarked) {
       const updatedBookmarks = storedBookmarks.filter(
@@ -40,30 +40,31 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
   };
 
   const handleCardClick = () => {
-    navigate(`/video-archives/filmview/${movie.title}`, { state: movie }); 
+    navigate(`/video-archives/filmview/${movie.title}`, { state: movie });
   };
 
   return (
     <article
       key={movie.title}
-      className={`movieCard ${size}`} 
+      className={`movieCard ${size}`}
       data-testid="movieCard"
       onClick={handleCardClick}
     >
       <img src={movie.thumbnail} alt={movie.title} />
       <div className="movieCard-hoverContent">
-        <div className="hoverContent-bookmark" 
+        <div
+          className="hoverContent-bookmark"
           onClick={e => {
             e.stopPropagation();
             toggleBookmark();
           }}
-          >
+        >
           <span className={isBookmarked ? 'star bookmarked' : 'star'}>
             {isBookmarked ? '★' : '☆'}
           </span>
         </div>
-        <p className="hoverContent-year">{`Released: ${movie.year}`}</p> 
-        <p className="hoverContent-rating">{movie.rating}</p> 
+        <p className="hoverContent-year">{`Released: ${movie.year}`}</p>
+        <p className="hoverContent-rating">{movie.rating}</p>
       </div>
     </article>
   );
