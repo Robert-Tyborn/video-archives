@@ -52,7 +52,12 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
     >
       <img src={movie.thumbnail} alt={movie.title} />
       <div className="movieCard-hoverContent">
-        <div className="hoverContent-bookmark" onClick={toggleBookmark}>
+        <div className="hoverContent-bookmark" 
+          onClick={e => {
+            e.stopPropagation();
+            toggleBookmark();
+          }}
+          >
           <span className={isBookmarked ? 'star bookmarked' : 'star'}>
             {isBookmarked ? '★' : '☆'}
           </span>
