@@ -66,10 +66,11 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
     >
       <img src={movie.thumbnail} alt={movie.title} />
       <div className="movieCard-hoverContent">
+
         <div className="hoverContent-bookmark" onClick={toggleBookmark}>
-            {isBookmarked ? "remove": "add"}
-          
+               {isBookmarked ? '★' : '☆'}
         </div>
+      
         <p className="hoverContent-year">{`Released: ${movie.year}`}</p>
         <p className="hoverContent-rating">{`${movie.rating}`}</p>
       </div>
@@ -78,3 +79,4 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
 };
 
 export default MovieCard;
+

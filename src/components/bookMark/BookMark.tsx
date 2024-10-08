@@ -35,3 +35,4 @@ const Bookmark: React.FC<BookmarkProps> = ({ movie }) => {
 };
 
 export default Bookmark;
+
