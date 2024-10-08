@@ -61,6 +61,7 @@
     margin: 2px 2px;
     background-color: transparent;
     color: white;
+
   }
 
   .hoverContent-year {
@@ -74,4 +75,12 @@
   }
 }
 
+.star {
+  font-size: 50px;
+  color: white;
 
+}
+
+.bookmarked {
+  color: #FFD700; 
+}
