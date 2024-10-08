@@ -13,7 +13,7 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
 
   useEffect(() => {
     const storedBookmarks = JSON.parse(
-      localStorage.getItem('bookmarks') || '[]' // Added missing ||
+      localStorage.getItem('bookmarks') || '[]' 
     );
     const isMovieBookmarked = storedBookmarks.some(
       (bookmark: Movie) => bookmark.title === movie.title
@@ -23,7 +23,7 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
 
   const toggleBookmark = () => {
     const storedBookmarks = JSON.parse(
-      localStorage.getItem('bookmarks') || '[]' // Added missing ||
+      localStorage.getItem('bookmarks') || '[]' 
     );
     if (isBookmarked) {
       const updatedBookmarks = storedBookmarks.filter(
@@ -40,13 +40,13 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
   };
 
   const handleCardClick = () => {
-    navigate(`/video-archives/filmview/${movie.title}`, { state: movie }); // Corrected template literals
+    navigate(`/video-archives/filmview/${movie.title}`, { state: movie }); 
   };
 
   return (
     <article
       key={movie.title}
-      className={`movieCard ${size}`} // Corrected template literals
+      className={`movieCard ${size}`} 
       data-testid="movieCard"
       onClick={handleCardClick}
     >
@@ -57,8 +57,8 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
             {isBookmarked ? '★' : '☆'}
           </span>
         </div>
-        <p className="hoverContent-year">{`Released: ${movie.year}`}</p> {/* Corrected template literals */}
-        <p className="hoverContent-rating">{movie.rating}</p> {/* Corrected template literals */}
+        <p className="hoverContent-year">{`Released: ${movie.year}`}</p> 
+        <p className="hoverContent-rating">{movie.rating}</p> 
       </div>
     </article>
   );
