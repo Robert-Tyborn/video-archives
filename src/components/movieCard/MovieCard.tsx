@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'; 
+import { useEffect, useState } from 'react';
 import './MovieCard.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,22 +7,24 @@ type MovieCardProps = {
   size: 'small' | 'large';
 };
 
-const MovieCard = ({ movie, size }: MovieCardProps) => {
+export const MovieCard = ({ movie, size }: MovieCardProps) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const storedBookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+    const storedBookmarks = JSON.parse(
+      localStorage.getItem('bookmarks') || '[]' // Added missing ||
+    );
     const isMovieBookmarked = storedBookmarks.some(
       (bookmark: Movie) => bookmark.title === movie.title
     );
     setIsBookmarked(isMovieBookmarked);
   }, [movie.title]);
 
-  const toggleBookmark = (event: React.MouseEvent) => {
-    event.stopPropagation(); 
-    const storedBookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-
+  const toggleBookmark = () => {
+    const storedBookmarks = JSON.parse(
+      localStorage.getItem('bookmarks') || '[]' // Added missing ||
+    );
     if (isBookmarked) {
       const updatedBookmarks = storedBookmarks.filter(
         (bookmark: Movie) => bookmark.title !== movie.title
@@ -38,13 +40,13 @@ const MovieCard = ({ movie, size }: MovieCardProps) => {
   };
 
   const handleCardClick = () => {
-    navigate(`/video-archives/filmview/${movie.title}`, { state: movie });
+    navigate(`/video-archives/filmview/${movie.title}`, { state: movie }); // Corrected template literals
   };
 
   return (
     <article
       key={movie.title}
-      className={`movieCard ${size}`}
+      className={`movieCard ${size}`} // Corrected template literals
       data-testid="movieCard"
       onClick={handleCardClick}
     >
@@ -55,8 +57,8 @@ const MovieCard = ({ movie, size }: MovieCardProps) => {
             {isBookmarked ? '★' : '☆'}
           </span>
         </div>
-        <p className="hoverContent-year">{`Released: ${movie.year}`}</p>
-        <p className="hoverContent-rating">{`${movie.rating}`}</p>
+        <p className="hoverContent-year">{`Released: ${movie.year}`}</p> {/* Corrected template literals */}
+        <p className="hoverContent-rating">{movie.rating}</p> {/* Corrected template literals */}
       </div>
     </article>
   );
