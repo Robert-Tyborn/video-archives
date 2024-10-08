@@ -1,5 +1,6 @@
 import React from 'react';
 import './MovieCard.css';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -19,6 +20,7 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
     setIsBookmarked(isMovieBookmarked);
   }, [movie.title]);
 
+
   const toggleBookmark = () => {
     const storedBookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
     if (isBookmarked) {
@@ -30,13 +32,19 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
       localStorage.setItem('bookmarks', JSON.stringify([...storedBookmarks, movie]));
     }
     setIsBookmarked(!isBookmarked);
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/video-archives/filmview/${movie.title}`, { state: movie });
   };
+
 
   return (
     <article
       key={movie.title}
       className={`movieCard ${size}`}
       data-testid="movieCard"
+      onClick={handleCardClick}
     >
       <img src={movie.thumbnail} alt={movie.title} />
       <div className="movieCard-hoverContent">
@@ -56,5 +64,6 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
   );
 };
 
+}
 export default MovieCard;
 
