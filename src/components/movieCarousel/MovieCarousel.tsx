@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Slider from 'react-slick';
 import './moviecarousel.css';
 import { MovieCard } from '../movieCard/MovieCard';
