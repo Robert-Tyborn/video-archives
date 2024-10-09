@@ -7,8 +7,10 @@ import { fetchMovieData } from '../../utilities/fetch';
 import { useNavigate } from 'react-router-dom';
 import { waitFor } from '@testing-library/react';
 
+type FetchMovieDataFunction = () => Promise<{ title: string }[]>;
+
 vi.mock('../../utilities/fetch', () => ({
-  fetchMovieData: vi.fn(),
+  fetchMovieData: vi.fn() as FetchMovieDataFunction,
 }));
 
 vi.mock('react-router-dom', async () => {
@@ -61,11 +63,11 @@ describe('Search component functionality tests', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    (useNavigate as any).mockReturnValue(mockNavigate);
+    (useNavigate as typeof vi.fn).mockReturnValue(mockNavigate);
   });
 
   it('calls fetchMovieData when a valid query is provided', async () => {
-    (fetchMovieData as any).mockResolvedValue(mockMovies);
+    (fetchMovieData as FetchMovieDataFunction).mockResolvedValue(mockMovies);
     render(
       <MemoryRouter>
         <Search />
@@ -84,7 +86,7 @@ describe('Search component functionality tests', () => {
   });
 
   it('stores the search results in sessionStorage', async () => {
-    (fetchMovieData as any).mockResolvedValue(mockMovies);
+    (fetchMovieData as FetchMovieDataFunction).mockResolvedValue(mockMovies);
     render(
       <MemoryRouter>
         <Search />
@@ -105,7 +107,7 @@ describe('Search component functionality tests', () => {
   });
 
   it('navigates to the search results page with the correct query', async () => {
-    (fetchMovieData as any).mockResolvedValue(mockMovies);
+    (fetchMovieData as FetchMovieDataFunction).mockResolvedValue(mockMovies);
     render(
       <MemoryRouter>
         <Search />
