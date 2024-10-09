@@ -79,7 +79,7 @@ export default function TrendingCarousel({
       <div className="carouselContainer">
         <div className="sliderWrapper">
           <Slider {...settings}>
-            {movies.map((movie, index) => (
+            {movies.map(movie => (
               <MovieCard key={movie.title} movie={movie} size="small" />
             ))}
           </Slider>
