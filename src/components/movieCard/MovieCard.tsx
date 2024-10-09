@@ -1,5 +1,6 @@
-import './MovieCard.css';
 import { useNavigate } from 'react-router-dom';
+import './MovieCard.css';
+import Bookmark from '../bookMark/BookMark';
 
 type MovieCardProps = {
   movie: Movie;
@@ -22,10 +23,14 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
     >
       <img src={movie.thumbnail} alt={movie.title} className="movieThumbnail" />
       <div className="movieCard-hoverContent">
-        <div className="hoverContent-bookmark">Star</div>
+        <div className="hoverContent-bookmark">
+          <Bookmark movie={movie} />
+        </div>
         <p className="hoverContent-year">{`Released: ${movie.year}`}</p>
-        <p className="hoverContent-rating">{`${movie.rating}`}</p>
+        <p className="hoverContent-rating">{movie.rating}</p>
       </div>
     </article>
   );
 };
+
+export default MovieCard;

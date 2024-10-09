@@ -13,7 +13,7 @@ export default function Navbar() {
         <NavLink to="/video-archives/categories">
           <li>Categories</li>
         </NavLink>
-        <NavLink to="/video-archives/">
+        <NavLink to="/video-archives/bookmarks">
           <li>Bookmarks</li>
         </NavLink>
       </ul>

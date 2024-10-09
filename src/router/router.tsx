@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { Home } from '../pages/home/Home';
 import { Categories } from '../pages/categories/Categories';
 import SearchResults from '../components/searchResults/SearchResults';
+import Bookmarks from '../pages/bookmarks/Bookmarks';
 import FilmView from '../pages/filmView/FilmView';
 
 const router = createBrowserRouter([
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: '/video-archives/search-results',
     element: <SearchResults />,
+  },
+  {
+    path: '/video-archives/bookmarks',
+    element: <Bookmarks />,
   },
   {
     path: '/video-archives/filmview/:id',
