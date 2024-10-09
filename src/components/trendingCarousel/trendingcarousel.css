@@ -1,0 +1,39 @@
+.trendingContainer {
+  max-width: 35%;
+  margin: auto;
+  position: relative;
+}
+
+.sliderWrapper {
+  overflow: hidden;
+}
+
+.trendingContainer .slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease;
+  transform: scale(0.7);
+}
+
+.trendingContainer .slick-center {
+  z-index: 2;
+  transform: scale(1);
+}
+
+.slick-slide img {
+  transition: transform 0.5s ease;
+}
+
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.slick-track {
+  display: flex;
+  align-items: center;
+}
