@@ -6,3 +6,9 @@
 .bookmarked {
   color: #ffd700;
 }
+
+.bookmark-button {
+  background-color: black;
+  border: none;
+  border-radius: 20px;
+}
