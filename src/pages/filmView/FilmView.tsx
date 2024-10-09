@@ -5,6 +5,7 @@ import { fetchMovieData } from '../../utilities/fetch';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Bookmark from '../../components/bookMark/BookMark';
+import closeIcon from '../../assets/icons8-close-50.png';
 
 function FilmView() {
   const location = useLocation();
@@ -40,20 +41,38 @@ function FilmView() {
     return <p>Loading movie data...</p>;
   }
 
+  function handleIconClick() {
+    navigate('/video-archives/');
+  }
+
   return (
-    <div>
-      <h1>{movie.title}</h1>
-      <div className="thumbnail-container">
+    <div
+      className="film-container"
+      style={{
+        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 1)), url(${movie.thumbnail})`,
+  }}
+    >
+      <header className='closeIconHeader'>
+        <div className='closeIcon' onClick={handleIconClick}>
+          <img className='icon' src={closeIcon} alt="" />
+        </div>
+      </header>
+      <section className="film-content">
+        <h1 className="film-title">{movie.title}</h1>
+        <div className="thumbnail-container">
         <img src={movie.thumbnail} alt={movie.title} />
         <div className="bookmark-overlay">
           <Bookmark movie={movie} />
         </div>
       </div>
-      <p>{`Released: ${movie.year}`}</p>
-      <p>{`Rating: ${movie.rating}`}</p>
-      <p>{`Genre: ${movie.genre}`}</p>
-      <p>{`Actors: ${movie.actors}`}</p>
-      <p>{`Description: ${movie.synopsis}`}</p>
+        <section className="film-detailsWrapper">
+          <p className="film-details">{`Released: ${movie.year}`}</p>
+          <p className="film-details">{`Rating: ${movie.rating}`}</p>
+          <p className="film-details">{`Genre: ${movie.genre}`}</p>
+          <p className="film-details">{`Actors: ${movie.actors}`}</p>
+        </section>
+        <p className="film-synopsis">{`${movie.synopsis}`}</p>
+      </section>
     </div>
   );
 }
