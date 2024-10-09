@@ -67,9 +67,9 @@ export const Home = () => {
     <>
       <Navbar />
       <main>
-        <TrendingCarousel movies={trending} title="Trending" size="large" />
-        <MovieCarousel movies={recommended} title="Recommended" size="small" />
-        <MovieCarousel movies={remaining} title="Movies" size="small" />
+        <TrendingCarousel movies={trending} title="Trending" />
+        <MovieCarousel movies={recommended} title="Recommended" />
+        <MovieCarousel movies={remaining} title="Movies" />
       </main>
     </>
   );

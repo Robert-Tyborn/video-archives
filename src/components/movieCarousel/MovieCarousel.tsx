@@ -1,6 +1,6 @@
 import Slider from 'react-slick';
 import './moviecarousel.css';
-import { MovieDisplay } from '../movieDisplay/MovieDisplay';
+import { MovieCard } from '../movieCard/MovieCard';
 
 const NextArrow = (props: any) => {
   const { className, onClick } = props;
@@ -49,26 +49,14 @@ const PrevArrow = (props: any) => {
   );
 };
 
-interface Movie {
-  title: string;
-  thumbnail: string;
-  year: number;
-  rating: string;
-  actors: string[];
-  genre: string;
-  synopsis: string;
-}
-
-interface MovieCarouselProps {
+type MovieCarouselProps = {
   movies: Movie[];
   title: string;
-  size: 'small' | 'large';
-}
+};
 
-export default function MovieCarousel({
+export default function TrendingCarousel({
   movies,
   title,
-  size,
 }: MovieCarouselProps) {
   const settings = {
     dots: false,
@@ -76,24 +64,27 @@ export default function MovieCarousel({
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
-    centerMode: false,
+    centerMode: true,
+    centerPadding: '0px',
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     arrows: true,
   };
 
   return (
-    <div className="carouselContainer">
-      <div className="sliderWrapper">
+    <>
+      <div className="title">
         <h1>{title}</h1>
-        <Slider {...settings}>
-          {movies.map((movie, index) => (
-            <div key={index}>
-              <MovieDisplay movies={[movie]} title="" size={size} />
-            </div>
-          ))}
-        </Slider>
       </div>
-    </div>
+      <div className="carouselContainer">
+        <div className="sliderWrapper">
+          <Slider {...settings}>
+            {movies.map((movie, index) => (
+              <MovieCard key={movie.title} movie={movie} size="small" />
+            ))}
+          </Slider>
+        </div>
+      </div>
+    </>
   );
 }

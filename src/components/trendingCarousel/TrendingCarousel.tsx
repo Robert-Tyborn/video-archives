@@ -1,6 +1,6 @@
 import Slider from 'react-slick';
 import './TrendingCarousel.css';
-import { MovieDisplay } from '../movieDisplay/MovieDisplay';
+import { MovieCard } from '../movieCard/MovieCard';
 
 const NextArrow = (props: any) => {
   const { className, onClick } = props;
@@ -49,25 +49,14 @@ const PrevArrow = (props: any) => {
   );
 };
 
-interface Movie {
-  title: string;
-  thumbnail: string;
-  year: number;
-  rating: string;
-  actors: string[];
-  genre: string;
-  synopsis: string;
-}
-
-interface TrendingCarouselProps {
+type TrendingCarouselProps = {
   movies: Movie[];
   title: string;
-  size: 'small' | 'large';
-}
+};
 
 export default function TrendingCarousel({
   movies,
-  size,
+  title,
 }: TrendingCarouselProps) {
   const settings = {
     dots: false,
@@ -83,16 +72,19 @@ export default function TrendingCarousel({
   };
 
   return (
-    <div className="trendingContainer">
-      <div className="sliderWrapper">
-        <Slider {...settings}>
-          {movies.map((movie, index) => (
-            <div key={index}>
-              <MovieDisplay movies={[movie]} title="" size={size} />
-            </div>
-          ))}
-        </Slider>
+    <>
+      <div className="title">
+        <h1>{title}</h1>
       </div>
-    </div>
+      <div className="trendingContainer">
+        <div className="sliderWrapper">
+          <Slider {...settings}>
+            {movies.map((movie, index) => (
+              <MovieCard key={movie.title} movie={movie} size="large" />
+            ))}
+          </Slider>
+        </div>
+      </div>
+    </>
   );
 }

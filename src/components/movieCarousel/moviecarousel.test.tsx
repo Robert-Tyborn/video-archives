@@ -1,3 +1,3 @@
-it('should', () => {
+it('', () => {
   expect(true).toBe(true);
 });

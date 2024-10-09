@@ -33,21 +33,7 @@
   z-index: 1;
 }
 
-.prev-arrow {
-  left: -60px;
-}
-
-.next-arrow {
-  right: -60px;
-}
-
 .slick-track {
   display: flex;
   align-items: center;
-}
-
-.trendingThumbnail {
-  width: 400px;
-  height: 570px;
-  border-radius: 20px;
 }
