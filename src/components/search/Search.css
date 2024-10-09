@@ -2,7 +2,6 @@
   position: relative;
   display: flex;
   align-items: center;
-  /* width: 100%;  */
   max-width: 300px;
 }
 .search-input {
@@ -10,10 +9,11 @@
   height: 1.65rem;
   border: 1px solid #ffffff;
   background-color: transparent;
-  color: #000;
+  color: #ffffff;
   padding: 0.5rem 2.5rem 0.5rem 0.5rem;
   border-radius: 4px;
   outline: none;
+  font-size: 1rem;
 }
 .search-input::placeholder {
   color: #e1e1e1;

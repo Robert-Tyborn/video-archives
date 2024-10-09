@@ -18,11 +18,13 @@ const SearchResults = () => {
     <div>
       <Navbar />
       {searchResults.length > 0 ? (
-        <MovieDisplay
-          movies={searchResults}
-          title="Search Results"
-          size="large"
-        />
+        <div className="results-container">
+          <MovieDisplay 
+            movies={searchResults}
+            title="Search Results"
+            size="large"
+          />
+        </div>
       ) : (
         <p>No results found</p>
       )}
