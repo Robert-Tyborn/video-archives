@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { fetchMovieData } from '../../utilities/fetch';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Bookmark from '../../components/bookMark/BookMark';
 
 function FilmView() {
   const location = useLocation();
@@ -42,14 +43,22 @@ function FilmView() {
   return (
     <div>
       <h1>{movie.title}</h1>
-      <img src={movie.thumbnail} alt={movie.title} />
+      <div className="thumbnail-container">
+        <img src={movie.thumbnail} alt={movie.title} />
+        <div className="bookmark-overlay">
+          <Bookmark movie={movie} />
+        </div>
+      </div>
       <p>{`Released: ${movie.year}`}</p>
       <p>{`Rating: ${movie.rating}`}</p>
       <p>{`Genre: ${movie.genre}`}</p>
       <p>{`Actors: ${movie.actors}`}</p>
       <p>{`Description: ${movie.synopsis}`}</p>
+    
+
     </div>
   );
 }
 
 export default FilmView;
+
