@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import './Search.css';
 import searchGlass from '../../assets/search-glass-white.svg';
 
-
 const Search = () => {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
@@ -42,7 +41,6 @@ const Search = () => {
     }
   };
 
-  
   return (
     <form onSubmit={handleSearch} className="search-container">
       <input
