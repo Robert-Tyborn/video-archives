@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import SearchResults from './SearchResults';
-import { MemoryRouter, useLocation } from 'react-router-dom';
-import { MovieDisplay } from '../movieDisplay/MovieDisplay';
+import { MemoryRouter } from 'react-router-dom';
 
 vi.mock('../movieDisplay/MovieDisplay', () => ({
   MovieDisplay: ({ movies, title }) => (
