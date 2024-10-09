@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Slider from 'react-slick';
-import './TrendingCarousel.css';
+import './trendingcarousel.css';
 import { MovieCard } from '../movieCard/MovieCard';
 
 const NextArrow = (props: any) => {
