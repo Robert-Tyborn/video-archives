@@ -47,11 +47,11 @@ describe('Bookmark Component', () => {
     render(<Bookmark movie={mockMovie} />);
     const button = screen.getByRole('button');
 
-    fireEvent.click(button); 
-    expect(button.textContent).toBe('★'); 
+    fireEvent.click(button);
+    expect(button.textContent).toBe('★');
     expect(localStorage.getItem('bookmarks')).toContain(
       JSON.stringify(mockMovie)
-    ); 
+    );
   });
 
   it('should remove a movie from bookmarks and update button text when clicked', () => {
@@ -62,9 +62,9 @@ describe('Bookmark Component', () => {
     expect(button.textContent).toBe('★');
 
     fireEvent.click(button);
-    expect(button.textContent).toBe('☆'); 
+    expect(button.textContent).toBe('☆');
     expect(localStorage.getItem('bookmarks')).not.toContain(
       JSON.stringify(mockMovie)
-    ); 
+    );
   });
 });
