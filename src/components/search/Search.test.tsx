@@ -116,7 +116,7 @@ describe('Search component functionality tests', () => {
     const button = screen.getByRole('button', { name: /search/i });
 
     await userEvent.type(input, 'Casablanca');
-    await userEvent.click(button); 
+    await userEvent.click(button);
 
     await waitFor(() => {
       expect(mockNavigate).toHaveBeenCalledWith(
