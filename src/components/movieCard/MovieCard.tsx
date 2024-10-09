@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import './MovieCard.css';
 import { useNavigate } from 'react-router-dom';
+import './MovieCard.css';
+import Bookmark from '../bookMark/BookMark';
 
 type MovieCardProps = {
   movie: Movie;
@@ -8,36 +8,7 @@ type MovieCardProps = {
 };
 
 export const MovieCard = ({ movie, size }: MovieCardProps) => {
-  const [isBookmarked, setIsBookmarked] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const storedBookmarks = JSON.parse(
-      localStorage.getItem('bookmarks') || '[]'
-    );
-    const isMovieBookmarked = storedBookmarks.some(
-      (bookmark: Movie) => bookmark.title === movie.title
-    );
-    setIsBookmarked(isMovieBookmarked);
-  }, [movie.title]);
-
-  const toggleBookmark = () => {
-    const storedBookmarks = JSON.parse(
-      localStorage.getItem('bookmarks') || '[]'
-    );
-    if (isBookmarked) {
-      const updatedBookmarks = storedBookmarks.filter(
-        (bookmark: Movie) => bookmark.title !== movie.title
-      );
-      localStorage.setItem('bookmarks', JSON.stringify(updatedBookmarks));
-    } else {
-      localStorage.setItem(
-        'bookmarks',
-        JSON.stringify([...storedBookmarks, movie])
-      );
-    }
-    setIsBookmarked(!isBookmarked);
-  };
 
   const handleCardClick = () => {
     navigate(`/video-archives/filmview/${movie.title}`, { state: movie });
@@ -52,16 +23,8 @@ export const MovieCard = ({ movie, size }: MovieCardProps) => {
     >
       <img src={movie.thumbnail} alt={movie.title} />
       <div className="movieCard-hoverContent">
-        <div
-          className="hoverContent-bookmark"
-          onClick={e => {
-            e.stopPropagation();
-            toggleBookmark();
-          }}
-        >
-          <span className={isBookmarked ? 'star bookmarked' : 'star'}>
-            {isBookmarked ? '★' : '☆'}
-          </span>
+        <div className="hoverContent-bookmark">
+          <Bookmark movie={movie} />
         </div>
         <p className="hoverContent-year">{`Released: ${movie.year}`}</p>
         <p className="hoverContent-rating">{movie.rating}</p>
