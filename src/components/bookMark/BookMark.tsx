@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './Bookmark.css';
+import './BookMark.css';
 
 type BookmarkProps = {
   movie: Movie;
