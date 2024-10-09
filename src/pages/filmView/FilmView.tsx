@@ -50,21 +50,20 @@ function FilmView() {
       className="film-container"
       style={{
         backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 1)), url(${movie.thumbnail})`,
-  }}
+      }}
     >
-      <header className='closeIconHeader'>
-        <div className='closeIcon' onClick={handleIconClick}>
-          <img className='icon' src={closeIcon} alt="" />
+      <header className="closeIconHeader">
+        <div className="closeIcon" onClick={handleIconClick}>
+          <img className="icon" src={closeIcon} alt="" />
         </div>
       </header>
       <section className="film-content">
+        <section className='titleAndBookmark'>
         <h1 className="film-title">{movie.title}</h1>
         <div className="thumbnail-container">
-        <img src={movie.thumbnail} alt={movie.title} />
-        <div className="bookmark-overlay">
           <Bookmark movie={movie} />
         </div>
-      </div>
+        </section>
         <section className="film-detailsWrapper">
           <p className="film-details">{`Released: ${movie.year}`}</p>
           <p className="film-details">{`Rating: ${movie.rating}`}</p>
