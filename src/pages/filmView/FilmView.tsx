@@ -54,11 +54,8 @@ function FilmView() {
       <p>{`Genre: ${movie.genre}`}</p>
       <p>{`Actors: ${movie.actors}`}</p>
       <p>{`Description: ${movie.synopsis}`}</p>
-    
-
     </div>
   );
 }
 
 export default FilmView;
-
