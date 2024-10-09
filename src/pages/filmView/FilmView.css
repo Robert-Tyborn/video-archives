@@ -49,6 +49,14 @@ h1 {
       background-color: rgba(0, 0, 0, 0.661); /* Lätt genomskinlig bakgrund bakom texten, 0.558 */
       padding: 10px;
       border-radius: 8px;
+
+      & .titleAndBookmark {
+        display: flex;
+
+        & .thumbnail-container {
+          margin-left: auto;
+        }
+      }
     }
 
     & .film-title {
