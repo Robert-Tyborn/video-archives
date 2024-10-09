@@ -40,9 +40,9 @@ export const Home = () => {
     fetchData();
   }, []);
 
-  const remainingMovies = (selectedMovies: Movie[], allMovies: Movie[]) => {
+  const remainingMovies = (remainingMovies: Movie[], allMovies: Movie[]) => {
     return allMovies.filter(movieData => {
-      return !selectedMovies.some(movie => movie.title === movieData.title);
+      return !remainingMovies.some(movie => movie.title === movieData.title);
     });
   };
 
