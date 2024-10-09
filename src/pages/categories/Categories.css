@@ -1,8 +1,60 @@
-.seach-by-category {
-  display: flex;
-  flex-wrap: wrap;
+.main_seach-by-genre {
+  padding: 10px 30px;
+  max-width: 1400px;
+  margin: 0 auto;
 
-  div {
-    margin: 6px;
+  .seach-by-genre_optionContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+
+    .seach-by-genre_options {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      label {
+        color: #333;
+        cursor: pointer;
+      }
+
+      input[type='checkbox'] {
+        display: none;
+      }
+
+      .options_genre {
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgb(82, 82, 82);
+        color: white;
+        border-radius: 6px;
+        font-weight: 600;
+        width: 100px;
+        height: 50px;
+        box-sizing: border-box;
+        transition: 0.2s;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        margin: 6px;
+      }
+
+      .options_genre:hover {
+        background-color: rgb(231, 231, 231);
+        color: rgba(0, 0, 0, 0.8);
+        border-radius: 6px;
+        transform: scale(103%);
+        border: 2px solid rgba(0, 0, 0, 0.7);
+      }
+
+      .activeGenre {
+        background-color: rgb(231, 231, 231);
+        border: 2px solid rgba(0, 0, 0, 0.5);
+        color: rgba(0, 0, 0, 0.8);
+      }
+    }
   }
 }
