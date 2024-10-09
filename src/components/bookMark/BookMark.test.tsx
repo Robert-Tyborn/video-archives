@@ -3,13 +3,13 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import Bookmark from './BookMark';
 
 const localStorageMock = (() => {
-  let store: Record<string, string> = {};
+  let store: Record<string, string[]> = {};
   return {
     getItem(key: string) {
-      return store[key] || null;
+      return store[key] ? JSON.stringify(store[key]) : null;
     },
     setItem(key: string, value: string) {
-      store[key] = value;
+      store[key] = JSON.parse(value);
     },
     removeItem(key: string) {
       delete store[key];
@@ -39,31 +39,32 @@ describe('Bookmark Component', () => {
 
   it('should render the correct button text based on bookmark status', () => {
     render(<Bookmark movie={mockMovie} />);
-
     const button = screen.getByRole('button');
-    expect(button.textContent).toBe('Add Bookmark');
+    expect(button.textContent).toBe('☆');
   });
 
   it('should add a movie to bookmarks and update button text when clicked', () => {
     render(<Bookmark movie={mockMovie} />);
-
     const button = screen.getByRole('button');
-    fireEvent.click(button);
 
-    expect(button.textContent).toBe('Remove Bookmark');
-    expect(localStorage.getItem('bookmarks')).toContain(mockMovie.title);
+    fireEvent.click(button); 
+    expect(button.textContent).toBe('★'); 
+    expect(localStorage.getItem('bookmarks')).toContain(
+      JSON.stringify(mockMovie)
+    ); 
   });
 
   it('should remove a movie from bookmarks and update button text when clicked', () => {
     localStorage.setItem('bookmarks', JSON.stringify([mockMovie]));
-
     render(<Bookmark movie={mockMovie} />);
 
     const button = screen.getByRole('button');
-    expect(button.textContent).toBe('Remove Bookmark');
+    expect(button.textContent).toBe('★');
 
     fireEvent.click(button);
-    expect(button.textContent).toBe('Add Bookmark');
-    expect(localStorage.getItem('bookmarks')).not.toContain(mockMovie.title);
+    expect(button.textContent).toBe('☆'); 
+    expect(localStorage.getItem('bookmarks')).not.toContain(
+      JSON.stringify(mockMovie)
+    ); 
   });
 });
