@@ -19,3 +19,5 @@ export const MovieDisplay = ({ movies, title, size }: MovieDisplayProps) => {
     </section>
   );
 };
+
+export default MovieDisplay;
