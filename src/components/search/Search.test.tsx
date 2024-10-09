@@ -63,11 +63,11 @@ describe('Search component functionality tests', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    (useNavigate as typeof vi.fn).mockReturnValue(mockNavigate);
+    (useNavigate as any).mockReturnValue(mockNavigate);
   });
 
   it('calls fetchMovieData when a valid query is provided', async () => {
-    (fetchMovieData as FetchMovieDataFunction).mockResolvedValue(mockMovies);
+    (fetchMovieData as any).mockResolvedValue(mockMovies);
     render(
       <MemoryRouter>
         <Search />
@@ -86,7 +86,7 @@ describe('Search component functionality tests', () => {
   });
 
   it('stores the search results in sessionStorage', async () => {
-    (fetchMovieData as FetchMovieDataFunction).mockResolvedValue(mockMovies);
+    (fetchMovieData as any).mockResolvedValue(mockMovies);
     render(
       <MemoryRouter>
         <Search />
@@ -107,7 +107,7 @@ describe('Search component functionality tests', () => {
   });
 
   it('navigates to the search results page with the correct query', async () => {
-    (fetchMovieData as FetchMovieDataFunction).mockResolvedValue(mockMovies);
+    (fetchMovieData as any).mockResolvedValue(mockMovies);
     render(
       <MemoryRouter>
         <Search />

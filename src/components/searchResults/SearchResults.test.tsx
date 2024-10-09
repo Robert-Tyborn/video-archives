@@ -2,8 +2,18 @@ import { render, screen } from '@testing-library/react';
 import SearchResults from './SearchResults';
 import { MemoryRouter } from 'react-router-dom';
 
+type Movie = {
+  id: number;
+  title: string;
+};
+
+type MovieDisplayProps = {
+  movies: Movie[];
+  title: string;
+};
+
 vi.mock('../movieDisplay/MovieDisplay', () => ({
-  MovieDisplay: ({ movies, title }) => (
+  MovieDisplay: ({ movies, title }: MovieDisplayProps) => (
     <div>
       <h2>{title}</h2>
       {movies.map(movie => (
