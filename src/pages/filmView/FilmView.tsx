@@ -58,11 +58,11 @@ function FilmView() {
         </div>
       </header>
       <section className="film-content">
-        <section className='titleAndBookmark'>
-        <h1 className="film-title">{movie.title}</h1>
-        <div className="thumbnail-container">
-          <Bookmark movie={movie} />
-        </div>
+        <section className="titleAndBookmark">
+          <h1 className="film-title">{movie.title}</h1>
+          <div className="thumbnail-container">
+            <Bookmark movie={movie} />
+          </div>
         </section>
         <section className="film-detailsWrapper">
           <p className="film-details">{`Released: ${movie.year}`}</p>
