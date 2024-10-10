@@ -42,6 +42,5 @@
 //     expect(await screen.findByText('Actors: Leonardo DiCaprio, Joseph Gordon-Levitt')).toBeInTheDocument();
 //     expect(await screen.findByText('A thief who steals corporate secrets')).toBeInTheDocument();
 
-  
 //   });
 // });
