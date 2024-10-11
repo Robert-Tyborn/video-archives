@@ -22,7 +22,7 @@ export const Home = () => {
 
           const filteredMovies = remainingMovies(trendingMovies, data);
 
-          const recommendedMovies = randomSelectionMovies(filteredMovies, 8);
+          const recommendedMovies = randomSelectionMovies(filteredMovies, 1);
           setRecommended(recommendedMovies);
 
           const remaining = remainingMovies(
@@ -66,7 +66,7 @@ export const Home = () => {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="home_main">
         <TrendingCarousel movies={trending} title="Trending" />
         <MovieCarousel movies={recommended} title="Recommended" />
         <MovieCarousel movies={remaining} title="Movies" />

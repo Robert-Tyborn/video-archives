@@ -1,3 +1,7 @@
+.title {
+  align-self: flex-start;
+}
+
 .trendingContainer {
   max-width: 35%;
   margin: auto;

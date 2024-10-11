@@ -1,5 +1,5 @@
-.displayMovie-container {
+.home_main {
   display: flex;
   flex-direction: column;
-  text-align: start;
+  align-items: center;
 }
