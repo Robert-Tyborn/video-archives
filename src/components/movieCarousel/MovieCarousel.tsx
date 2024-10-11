@@ -55,10 +55,7 @@ type MovieCarouselProps = {
   title: string;
 };
 
-export default function TrendingCarousel({
-  movies,
-  title,
-}: MovieCarouselProps) {
+export default function MovieCarousel({ movies, title }: MovieCarouselProps) {
   const settings = {
     dots: false,
     infinite: true,
