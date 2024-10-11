@@ -4,16 +4,16 @@ import Search from '../search/Search';
 
 export default function Navbar() {
   return (
-    <nav>
-      <ul>
-        <li className="logo">Video Archives</li>
-        <NavLink to="/video-archives/">
+    <nav className="navbar">
+      <h2 className="logo">Video Archives</h2>
+      <ul className="navbar_link-list">
+        <NavLink to="/video-archives/" className="link-list_link">
           <li>Home</li>
         </NavLink>
-        <NavLink to="/video-archives/categories">
+        <NavLink to="/video-archives/categories" className="link-list_link">
           <li>Categories</li>
         </NavLink>
-        <NavLink to="/video-archives/bookmarks">
+        <NavLink to="/video-archives/bookmarks" className="link-list_link">
           <li>Bookmarks</li>
         </NavLink>
       </ul>
