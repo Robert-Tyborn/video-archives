@@ -1,0 +1,54 @@
+.carouselContainer {
+  margin: auto;
+  position: relative;
+  width: 70vw;
+}
+
+.sliderWrapper {
+  overflow: hidden;
+}
+
+.slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.prev-arrow {
+  left: -60px;
+}
+
+.next-arrow {
+  right: -60px;
+}
+
+.slick-track {
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1600px) {
+  .carouselContainer {
+    width: 65vw;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .movieCarousel_title {
+    text-align: center;
+  }
+
+  .carouselContainer {
+    margin: auto;
+    position: relative;
+    width: 65vw;
+  }
+}
