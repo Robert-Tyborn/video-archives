@@ -22,7 +22,7 @@ export const Home = () => {
 
           const filteredMovies = remainingMovies(trendingMovies, data);
 
-          const recommendedMovies = randomSelectionMovies(filteredMovies, 1);
+          const recommendedMovies = randomSelectionMovies(filteredMovies, 8);
           setRecommended(recommendedMovies);
 
           const remaining = remainingMovies(

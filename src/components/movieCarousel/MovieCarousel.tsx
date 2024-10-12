@@ -4,14 +4,14 @@ import './moviecarousel.css';
 import { MovieCard } from '../movieCard/MovieCard';
 
 const NextArrow = (props: any) => {
-  const { className, onClick } = props;
+  const { className, onClick, height, width } = props;
   return (
     <div className={`${className} custom-arrow next-arrow`} onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="#000000"
-        height="50px"
-        width="50px"
+        height={height}
+        width={width}
         viewBox="0 0 330 330"
       >
         <path
@@ -27,14 +27,14 @@ const NextArrow = (props: any) => {
 };
 
 const PrevArrow = (props: any) => {
-  const { className, onClick } = props;
+  const { className, onClick, height, width } = props;
   return (
     <div className={`${className} custom-arrow prev-arrow`} onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="#000000"
-        height="50px"
-        width="50px"
+        height={height}
+        width={width}
         viewBox="0 0 330 330"
         style={{ transform: 'rotate(180deg)' }}
       >
@@ -55,27 +55,54 @@ type MovieCarouselProps = {
   title: string;
 };
 
-export default function TrendingCarousel({
-  movies,
-  title,
-}: MovieCarouselProps) {
+export default function MovieCarousel({ movies, title }: MovieCarouselProps) {
   const settings = {
     dots: false,
     infinite: true,
+    initialSlide: 1,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
-    centerMode: true,
-    centerPadding: '0px',
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow height="50px" width="50px" />,
+    prevArrow: <PrevArrow height="50px" width="50px" />,
     arrows: true,
+    responsive: [
+      {
+        breakpoint: 2400,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 1600,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 2,
+          nextArrow: <NextArrow height="40px" width="40px" />,
+          prevArrow: <PrevArrow height="40px" width="40px" />,
+        },
+      },
+      {
+        breakpoint: 540,
+        settings: {
+          slidesToShow: 1,
+          initialSlide: 0,
+          nextArrow: <NextArrow height="40px" width="40px" />,
+          prevArrow: <PrevArrow height="40px" width="40px" />,
+        },
+      },
+    ],
   };
 
   return (
-    <>
-      <div className="title">
-        <h1>{title}</h1>
+    <section>
+      <div className="movieCarousel_title">
+        <h2>{title}</h2>
       </div>
       <div className="carouselContainer">
         <div className="sliderWrapper">
@@ -86,6 +113,6 @@ export default function TrendingCarousel({
           </Slider>
         </div>
       </div>
-    </>
+    </section>
   );
 }
