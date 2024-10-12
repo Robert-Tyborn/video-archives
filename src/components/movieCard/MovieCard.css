@@ -1,11 +1,11 @@
 .small {
-  height: 30vh;
+  width: clamp(170px, 110px + 10vw, 300px);
+  height: clamp(240px, 200px + 10vw, 400px);
 }
 
 .large {
-  height: 35vh;
-  width: 110%;
-  max-width: 500px;
+  width: clamp(180px, 140px + 10vw, 370px);
+  height: clamp(250px, 230px + 10vw, 480px);
 }
 
 .movieCard {
@@ -13,12 +13,20 @@
   cursor: pointer;
   transition: 0.3s;
   overflow: hidden;
-  background-color: transparent;
+  background-color: white;
+  font-weight: 600;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
 
   img {
     height: 100%;
     width: 100%;
-    border-radius: 15px;
+  }
+
+  .movieCard_imgError {
+    .imgError-title {
+      padding: 4px 16px;
+    }
   }
 }
 
@@ -36,6 +44,7 @@
 
 .movieCard:hover {
   transform: scale(105%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .movieCard:hover .movieCard-hoverContent {
@@ -51,11 +60,12 @@
     align-self: flex-end;
     background-color: rgb(255, 255, 255);
     color: black;
+    font-size: clamp(0.75rem, 0.4rem + 1vw, 1rem);
   }
 
   .hoverContent-bookmark {
     position: absolute;
-    right: 6px;
+    right: 0px;
     top: 6px;
     padding: 2px 10px;
     margin: 2px 2px;
@@ -72,4 +82,7 @@
     color: white;
     border-radius: 25px;
   }
+}
+
+@media only screen and (max-width: 500px) {
 }

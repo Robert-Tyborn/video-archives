@@ -5,7 +5,7 @@ import Search from '../search/Search';
 export default function Navbar() {
   return (
     <nav className="navbar">
-      <h2 className="logo">Video Archives</h2>
+      <h1 className="logo">Video Archives</h1>
       <ul className="navbar_link-list">
         <NavLink to="/video-archives/" className="link-list_link">
           <li>Home</li>

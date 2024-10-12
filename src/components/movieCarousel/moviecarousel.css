@@ -1,7 +1,7 @@
 .carouselContainer {
   margin: auto;
   position: relative;
-  width: 63%;
+  width: 70vw;
 }
 
 .sliderWrapper {
@@ -35,6 +35,20 @@
   align-items: center;
 }
 
-.title {
-  margin-left: 19%;
+@media only screen and (max-width: 1600px) {
+  .carouselContainer {
+    width: 65vw;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .movieCarousel_title {
+    text-align: center;
+  }
+
+  .carouselContainer {
+    margin: auto;
+    position: relative;
+    width: 65vw;
+  }
 }
