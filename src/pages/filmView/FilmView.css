@@ -32,14 +32,14 @@
 
       & .icon {
         height: 40px;
+        width: 40px;
       }
     }
   }
 
   & .film-content {
-    /* position: absolute; */
-    position: relative;
-    bottom: -625px;
+    position: absolute;
+    bottom: 0%;
     margin: 20px;
     background-color: rgba(
       0,
@@ -47,7 +47,7 @@
       0,
       0.661
     ); /* Lätt genomskinlig bakgrund bakom texten, 0.558 */
-    padding: 10px;
+    padding: 15px;
     border-radius: 8px;
 
     & .titleAndBookmark {
@@ -79,7 +79,9 @@
 
 @media only screen and (max-width: 600px) {
   .film-container {
-    background-size: contain;
+    height: 800px;
+    background-size: cover;
+    background-position: center;
   }
 
   .film-content {
@@ -88,7 +90,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    top: 20%;
+    top: 35%;
 
     & .film-title {
       font-size: 22px;
@@ -107,4 +109,15 @@
       margin-left: 30px;
     }
   }
+
+  .titleAndBookmark {
+    display: flex;
+    flex-direction: column;
+    
+    & .thumbnail-container{
+      display: flex;
+      margin-right: auto;
+    }
+  }
+
 }

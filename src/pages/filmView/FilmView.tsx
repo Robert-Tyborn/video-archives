@@ -50,7 +50,7 @@ function FilmView() {
     <div
       className="film-container"
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 1)), url(${movie.thumbnail})`,
+        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1)), url(${movie.thumbnail})`,
       }}
     >
       <Navbar />
