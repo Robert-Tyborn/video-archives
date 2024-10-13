@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.6);
     padding: 10px 0;
 
     .seach-by-genre_options {
@@ -30,7 +30,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: rgb(82, 82, 82);
+        background: rgb(58, 58, 58);
         color: white;
         border-radius: 6px;
         font-weight: 600;
@@ -52,7 +52,7 @@
 
       .activeGenre {
         background-color: rgb(231, 231, 231);
-        border: 2px solid rgba(0, 0, 0, 0.5);
+        border: 2px solid rgba(0, 0, 0, 0.6);
         color: rgba(0, 0, 0, 0.8);
       }
     }
