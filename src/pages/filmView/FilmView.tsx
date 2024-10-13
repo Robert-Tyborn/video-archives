@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Bookmark from '../../components/bookMark/BookMark';
 import closeIcon from '../../assets/icons8-close-50.png';
+import Navbar from '../../components/navbar/Navbar';
 
 function FilmView() {
   const location = useLocation();
@@ -52,6 +53,7 @@ function FilmView() {
         backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 1)), url(${movie.thumbnail})`,
       }}
     >
+      <Navbar />
       <header className="closeIconHeader">
         <div className="closeIcon" onClick={handleIconClick}>
           <img className="icon" src={closeIcon} alt="" />
