@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MovieDisplay from '../../components/movieDisplay/MovieDisplay';
 import Navbar from '../../components/navbar/Navbar';
+import './Bookmarks.css';
 
 const Bookmarks: React.FC = () => {
   const [bookmarkedMovies, setBookmarkedMovies] = useState<Movie[]>([]);
@@ -13,21 +14,19 @@ const Bookmarks: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <header>
         <Navbar />
       </header>
-      <h1>Your Bookmarked Movies</h1>
-      {bookmarkedMovies.length > 0 ? (
-        <MovieDisplay
-          movies={bookmarkedMovies}
-          title="Bookmarked Movies"
-          size="small"
-        />
-      ) : (
-        <p>No movies have been bookmarked yet.</p>
-      )}
-    </div>
+      <main className="bookmarks_main">
+        <h2>Your Bookmarked Movies</h2>
+        {bookmarkedMovies.length > 0 ? (
+          <MovieDisplay movies={bookmarkedMovies} title="" size="small" />
+        ) : (
+          <p>No movies have been bookmarked yet.</p>
+        )}
+      </main>
+    </>
   );
 };
 
