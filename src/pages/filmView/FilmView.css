@@ -1,10 +1,136 @@
-.thumbnail-container {
-  position: relative;
-  display: inline-block;
+.closeIconHeader {
+  display: flex;
+  justify-content: flex-end;
 }
-
+.closeIcon {
+  border-radius: 50%;
+  margin: 1rem;
+}
+.icon {
+  height: 2.5rem;
+  width: 2.5rem;
+}
 .bookmark-overlay {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+.film-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 30% 80%;
+  color: white;
+}
+
+.film-content {
+  width: 25%;
+  background-color: rgba(0, 0, 0, 0.661);
+  padding: 15px;
+  border-radius: 8px;
+}
+.film-title {
+  color: rgb(238, 116, 10);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.film-details {
+  background-color: rgba(210, 205, 196, 0.586);
+  border-radius: 6px;
+  padding: 2px 8px 2px 8px;
+  margin: 10px;
+}
+.film-detailsWrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.titleAndBookmark {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.titleAndBookmark h1 {
+  margin: 0;
+}
+
+.information {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.film-synopsis {
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
+}
+
+@media only screen and (max-width: 1450px) {
+  .film-container {
+    background-size: 35% 80%;
+  }
+
+  .information {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .film-container {
+    background-size: 50% 80%;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .film-detailsWrapper {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .film-content {
+    width: 40%;
+  }
+  .film-container {
+    background-size: 80% 90%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .film-container {
+    background-size: contain;
+    height: 800px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .film-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .film-title {
+    font-size: 22px;
+  }
+
+  .film-detailsWrapper {
+    flex-direction: column;
+  }
+
+  .film-details {
+    max-width: 200px;
+  }
+
+  .film-synopsis {
+    margin-right: 30px;
+    margin-left: 30px;
+  }
 }

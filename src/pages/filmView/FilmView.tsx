@@ -5,6 +5,8 @@ import { fetchMovieData } from '../../utilities/fetch';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Bookmark from '../../components/bookMark/BookMark';
+import closeIcon from '../../assets/icons8-close-50.png';
+import Navbar from '../../components/navbar/Navbar';
 
 function FilmView() {
   const location = useLocation();
@@ -40,21 +42,51 @@ function FilmView() {
     return <p>Loading movie data...</p>;
   }
 
+  function handleIconClick() {
+    navigate('/video-archives/');
+  }
+
   return (
-    <div>
-      <h1>{movie.title}</h1>
-      <div className="thumbnail-container">
-        <img src={movie.thumbnail} alt={movie.title} />
-        <div className="bookmark-overlay">
-          <Bookmark movie={movie} />
+    <>
+      <Navbar />
+      <header className="closeIconHeader">
+        <div className="closeIcon" onClick={handleIconClick}>
+          <img className="icon" src={closeIcon} alt="" />
         </div>
+      </header>
+      <div
+        className="film-container"
+        style={{
+          backgroundImage: `url(${movie.thumbnail})`,
+        }}
+      >
+        <section className="film-content">
+          <section className="titleAndBookmark">
+            <h1 className="film-title">{movie.title}</h1>
+            <div className="thumbnail-container">
+              <Bookmark movie={movie} />
+            </div>
+          </section>
+          <section className="film-detailsWrapper">
+            <article>
+              <div className="information">
+                <div>
+                  <p className="film-details">{`Released: ${movie.year}`}</p>
+                  <p className="film-details">{`Genre: ${movie.genre}`}</p>
+                </div>
+                <div>
+                  <p className="film-details">{`Rating: ${movie.rating}`}</p>
+                  <p className="film-details">{`Actors: ${movie.actors}`}</p>
+                </div>
+              </div>
+            </article>
+            <article>
+              <p className="film-synopsis">{`${movie.synopsis}`}</p>
+            </article>
+          </section>
+        </section>
       </div>
-      <p>{`Released: ${movie.year}`}</p>
-      <p>{`Rating: ${movie.rating}`}</p>
-      <p>{`Genre: ${movie.genre}`}</p>
-      <p>{`Actors: ${movie.actors}`}</p>
-      <p>{`Description: ${movie.synopsis}`}</p>
-    </div>
+    </>
   );
 }
 
