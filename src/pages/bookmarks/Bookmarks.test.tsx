@@ -11,7 +11,8 @@ describe('Bookmarks Component', () => {
       rating: 'PG-13',
       actors: ['Leonardo DiCaprio', 'Joseph Gordon-Levitt'],
       genre: 'Action, Sci-Fi',
-      synopsis: 'A thief who steals corporate secrets through the use of dream-sharing technology.',
+      synopsis:
+        'A thief who steals corporate secrets through the use of dream-sharing technology.',
       thumbnail: '',
     },
     {
@@ -46,7 +47,7 @@ describe('Bookmarks Component', () => {
     expect(screen.getByText('Your Bookmarked Movies')).toBeInTheDocument();
 
     mockMovies.forEach(movie => {
-        expect(screen.getByAltText(movie.title)).toBeInTheDocument();
+      expect(screen.getByAltText(movie.title)).toBeInTheDocument();
     });
   });
 
@@ -62,6 +63,8 @@ describe('Bookmarks Component', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText('No movies have been bookmarked yet.')).toBeInTheDocument();
+    expect(
+      screen.getByText('No movies have been bookmarked yet.')
+    ).toBeInTheDocument();
   });
 });
