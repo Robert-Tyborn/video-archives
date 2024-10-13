@@ -47,34 +47,46 @@ function FilmView() {
   }
 
   return (
-    <div
-      className="film-container"
-      style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 1)), url(${movie.thumbnail})`,
-      }}
-    >
+    <>
       <Navbar />
       <header className="closeIconHeader">
         <div className="closeIcon" onClick={handleIconClick}>
           <img className="icon" src={closeIcon} alt="" />
         </div>
       </header>
-      <section className="film-content">
-        <section className="titleAndBookmark">
-          <h1 className="film-title">{movie.title}</h1>
-          <div className="thumbnail-container">
-            <Bookmark movie={movie} />
-          </div>
+      <div
+        className="film-container"
+        style={{
+          backgroundImage: `url(${movie.thumbnail})`,
+        }}
+      >
+        <section className="film-content">
+          <section className="titleAndBookmark">
+            <h1 className="film-title">{movie.title}</h1>
+            <div className="thumbnail-container">
+              <Bookmark movie={movie} />
+            </div>
+          </section>
+          <section className="film-detailsWrapper">
+            <article>
+              <div className="information">
+                <div>
+                  <p className="film-details">{`Released: ${movie.year}`}</p>
+                  <p className="film-details">{`Genre: ${movie.genre}`}</p>
+                </div>
+                <div>
+                  <p className="film-details">{`Rating: ${movie.rating}`}</p>
+                  <p className="film-details">{`Actors: ${movie.actors}`}</p>
+                </div>
+              </div>
+            </article>
+            <article>
+              <p className="film-synopsis">{`${movie.synopsis}`}</p>
+            </article>
+          </section>
         </section>
-        <section className="film-detailsWrapper">
-          <p className="film-details">{`Released: ${movie.year}`}</p>
-          <p className="film-details">{`Rating: ${movie.rating}`}</p>
-          <p className="film-details">{`Genre: ${movie.genre}`}</p>
-          <p className="film-details">{`Actors: ${movie.actors}`}</p>
-        </section>
-        <p className="film-synopsis">{`${movie.synopsis}`}</p>
-      </section>
-    </div>
+      </div>
+    </>
   );
 }
 
