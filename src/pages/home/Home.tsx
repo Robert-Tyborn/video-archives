@@ -17,7 +17,9 @@ export const Home = () => {
         const data: Movie[] = await fetchMovieData();
 
         if (data.length > 0) {
-          const trendingMovies = randomSelectionMovies(data, 8);
+          const trendingMovies = data.filter(movie => {
+            return movie.isTrending;
+          });
           setTrending(trendingMovies);
 
           const filteredMovies = remainingMovies(trendingMovies, data);
