@@ -7,13 +7,29 @@ export default function Navbar() {
     <nav className="navbar">
       <h1 className="logo">Video Archives</h1>
       <ul className="navbar_link-list">
-        <NavLink to="/video-archives/" className="link-list_link">
+        <NavLink
+          to="/video-archives/"
+          end
+          className={({ isActive }) =>
+            isActive ? 'active link-list_link' : 'link-list_link'
+          }
+        >
           <li>Home</li>
         </NavLink>
-        <NavLink to="/video-archives/categories" className="link-list_link">
+        <NavLink
+          to="/video-archives/categories"
+          className={({ isActive }) =>
+            isActive ? 'active link-list_link' : 'link-list_link'
+          }
+        >
           <li>Categories</li>
         </NavLink>
-        <NavLink to="/video-archives/bookmarks" className="link-list_link">
+        <NavLink
+          to="/video-archives/bookmarks"
+          className={({ isActive }) =>
+            isActive ? 'active link-list_link' : 'link-list_link'
+          }
+        >
           <li>Bookmarks</li>
         </NavLink>
       </ul>
